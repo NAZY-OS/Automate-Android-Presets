@@ -1,0 +1,28 @@
+{
+  "file_version": "1.37.0",
+  "comment": "Automate flow to enable Sensors Off tile on boot",
+  "flows": [
+    {
+      "id": 1,
+      "title": "Enable Sensors Off on Boot",
+      "description": "Automatically toggles the Sensors Off tile in quick settings after device boot.",
+      "author": "",
+      "privilege": "superuser",
+      "run_on_system_startup": true,
+      "blocks": [
+        {
+          "id": 1,
+          "type": "begin",
+          "position": [200, 100],
+          "connector": { "target_id": 2 }
+        },
+        {
+          "id": 2,
+          "type": "shell_command_superuser",
+          "position": [200, 200],
+          "command": "cmd statusbar click-tile com.android.settings/.development.qstile.DevelopmentTiles$SensorsOff"
+        }
+      ]
+    }
+  ]
+}
